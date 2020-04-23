@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             _swiperTarjetas(),
+            _footer(context),
           ],
         ),
       ),
@@ -46,4 +47,16 @@ class HomePage extends StatelessWidget {
     //  peliculas: [1,2,3,4,5],
   //  );
   }
+
+  Widget _footer(BuildContext context ){
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Text('Popuulares', style: Theme.of(context).textTheme.subhead),
+        ],
+      ),
+    );
+  }
+
+
 }
