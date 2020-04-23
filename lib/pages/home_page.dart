@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas/models/pelicua_models.dart';
 import 'package:peliculas/provider/peliculas_provider.dart';
 
 import 'package:peliculas/widget/card_swiper_widget.dart';
@@ -33,19 +34,11 @@ class HomePage extends StatelessWidget {
         if (peli.hasData){return CardSwiper(peliculas: peli.data,);}
         else {
           return Container(
-            child: Center(
-              child:CircularProgressIndicator()
-            )
+            child: Center( child:CircularProgressIndicator())
           );
-
         }
       },
-      );
-    
-    
-  //  CardSwiper(
-    //  peliculas: [1,2,3,4,5],
-  //  );
+    );
   }
 
   Widget _footer(BuildContext context ){
@@ -53,10 +46,20 @@ class HomePage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Text('Popuulares', style: Theme.of(context).textTheme.subhead),
+          FutureBuilder(
+            future: PeliculasProvider().getPopulares(),
+            builder: (BuildContext context, AsyncSnapshot<List<Pelicula>> peliPopular) {
+              for (var item1 in peliPopular.data) {
+                print(item1.title);
+              }
+              
+              return Text('aqui imagen');
+              
+            },
+          ),
         ],
       ),
     );
   }
-
 
 }

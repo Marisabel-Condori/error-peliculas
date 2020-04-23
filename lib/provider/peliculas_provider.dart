@@ -18,6 +18,18 @@ class PeliculasProvider{
     final decodeData = json.decode(resp.body);
     final peliculas = new Peliculas.fromJsonList(decodeData['results']);
     return peliculas.items;
+  }
+
+  Future<List<Pelicula>> getPopulares() async{
+    final url = Uri.https(_url, '3/movie/popular',{
+      'api_key'   : _apiKey,
+      'languaje' : _languaje
+      }
+    );
+    final resp = await http.get(url);
+    final decodeData = json.decode(resp.body);
+    final peliculasPopu = new Peliculas.fromJsonList(decodeData['results']);
+    return peliculasPopu.items;
     
   }
 
