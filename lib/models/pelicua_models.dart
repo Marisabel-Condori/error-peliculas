@@ -61,5 +61,12 @@ class Pelicula {
   overview          =json['overview'];
   releaseDate       =json['release_date'];
   }
+
+  getObtenerPoster(){
+    if(posterPath == null){
+      return 'https://image.shutterstock.com/image-vector/no-image-available-icon-flat-260nw-1240855999.jpg';
+    }else{
+      return 'https://image.tmdb.org/t/p/w500/$posterPath';}
+  }
 }
 

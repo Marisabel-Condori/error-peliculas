@@ -20,12 +20,12 @@ class CardSwiper extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
-            child: Image.network(
-            "https://www.eluniverso.com/sites/default/files/styles/powgallery_1024/public/fotos/2015/01/vye01ln281114aphoto06.jpg?itok=ciF60qG5",
-            fit: BoxFit.cover),
+            child: FadeInImage(
+              placeholder: AssetImage('lib/asset/no-image.jpg'), 
+              image: NetworkImage(peliculas[index].getObtenerPoster() )),
           );
         },
-        itemCount: 3,
+        itemCount: peliculas.length,
        // pagination: new SwiperPagination(),
       //  control: new SwiperControl(),
       ),
