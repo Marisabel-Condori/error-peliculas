@@ -32,9 +32,10 @@ class MovieHorizontal extends StatelessWidget {
               child: FadeInImage(
                 placeholder: AssetImage('lib/asset/no-image.jpg'), 
                 image: NetworkImage(pelicula.getObtenerPoster(), ),
-                height: 110.0,
+                height: 100.0,
               ),
-            )
+            ),
+            Text(pelicula.title, overflow: TextOverflow.ellipsis,)
           ],
         ),
       );
