@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:peliculas/models/pelicua_models.dart';
 import 'package:peliculas/provider/peliculas_provider.dart';
 
 import 'package:peliculas/widget/card_swiper_widget.dart';
@@ -43,18 +42,15 @@ class HomePage extends StatelessWidget {
 
   Widget _footer(BuildContext context ){
     return Container(
+      width: double.infinity,
       child: Column(
         children: <Widget>[
           Text('Popuulares', style: Theme.of(context).textTheme.subhead),
           FutureBuilder(
             future: PeliculasProvider().getPopulares(),
-            builder: (BuildContext context, AsyncSnapshot<List<Pelicula>> peliPopular) {
-              for (var item1 in peliPopular.data) {
-                print(item1.title);
-              }
-              
-              return Text('aqui imagen');
-              
+            builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+              snapshot.data?.forEach((p) => print(p.title));
+              return Container(); 
             },
           ),
         ],

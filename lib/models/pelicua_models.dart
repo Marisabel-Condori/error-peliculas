@@ -11,7 +11,6 @@ class Peliculas{
   } 
 }
 
-
 class Pelicula {
   double popularity;
   int voteCount;
